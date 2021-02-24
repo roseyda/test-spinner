@@ -11,7 +11,7 @@ import { SpinnerOverlayComponent } from './../components/spinner-overlay/spinner
 export class SpinnerOverlayService {
   private overlayRef: OverlayRef = undefined;
 
-  constructor(private overlay: Overlay) {}
+  constructor(private readonly overlay: Overlay) {}
 
   public readonly spinner$ = defer(() => {
     this.show();
@@ -23,9 +23,7 @@ export class SpinnerOverlayService {
   }).pipe(share());
 
   private show(): void {
-    console.log(
-      '🚀 ~ file: spinner-overlay.service.ts ~ line 26 ~ SpinnerOverlayService ~ show ~ show'
-    );
+    console.log('SpinnerOverlayService ~ show spinner');
     // Hack avoiding `ExpressionChangedAfterItHasBeenCheckedError` error
     Promise.resolve(null).then(() => {
       this.overlayRef = this.overlay.create({
@@ -41,9 +39,7 @@ export class SpinnerOverlayService {
   }
 
   private hide(): void {
-    console.log(
-      '🚀 ~ file: spinner-overlay.service.ts ~ line 41 ~ SpinnerOverlayService ~ hide ~ hide'
-    );
+    console.log('SpinnerOverlayService ~ hide spinner');
     this.overlayRef.detach();
     this.overlayRef = undefined;
   }
